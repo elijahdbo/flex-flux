@@ -249,22 +249,32 @@
       </ul>
     </nav>
     <div class="navbar__actions">
-      <a class="navbar__cta" href="espace-client.html" aria-current="page">
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <rect x="3" y="6" width="8" height="6" rx="1"
-                stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6"
-                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-        </svg>
-        Espace Client
-      </a>
-      <button class="navbar__burger" id="burger-btn" type="button"
-              aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="navbar__burger-bar" aria-hidden="true"></span>
-        <span class="navbar__burger-bar" aria-hidden="true"></span>
-        <span class="navbar__burger-bar" aria-hidden="true"></span>
-      </button>
-    </div>
+  <a class="navbar__cta" href="espace-client.html">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <rect x="3" y="6" width="8" height="6" rx="1"
+            stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    Espace Client
+  </a>
+  <a href="carrieres/index.html"
+     class="navbar__careers-link"
+     style="font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;
+            letter-spacing:.15em;color:rgba(255,255,255,.35);padding:.5rem .75rem;
+            border-radius:4px;transition:color .2s;"
+     onmouseover="this.style.color='rgba(255,255,255,.7)'"
+     onmouseout="this.style.color='rgba(255,255,255,.35)'">
+    Carrières
+  </a>
+  <button class="navbar__burger" id="burger-btn" type="button"
+          aria-label="Ouvrir le menu" aria-expanded="false"
+          aria-controls="mobile-menu">
+    <span class="navbar__burger-bar" aria-hidden="true"></span>
+    <span class="navbar__burger-bar" aria-hidden="true"></span>
+    <span class="navbar__burger-bar" aria-hidden="true"></span>
+  </button>
+</div>
   </div>
 </header>
 
