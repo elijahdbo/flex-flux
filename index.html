@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>
+  var isGitHubPages = window.location.hostname === 'elijahdbo.github.io';
+  document.write('<base href="' + (isGitHubPages ? '/flex-flux/' : '/') + '">');
+</script>
   <!-- ═══════════════════════════════════════════════════════════
        META TECHNIQUES — Encoding, viewport, base
        ═══════════════════════════════════════════════════════════ -->
