@@ -1,0 +1,400 @@
+/* =============================================================================
+   NAVBAR.CSS — Flex-Flux
+   Navbar fixe glassmorphism + menu mobile plein écran
+   Dépend de : base.css
+   ============================================================================= */
+
+/* ── Navbar ────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: var(--navbar-h-mobile);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background     .45s var(--ease-out),
+    border-color   .45s var(--ease-out),
+    backdrop-filter .45s var(--ease-out);
+}
+
+.navbar.is-scrolled {
+  background: rgba(13, 31, 51, .88);
+  border-bottom-color: rgba(255, 255, 255, .08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    height: var(--navbar-h-desk);
+  }
+}
+
+/* ── Inner ─────────────────────────────────────────────────── */
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .navbar__inner {
+    padding-inline: 3rem;
+  }
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  border-radius: 4px;
+  transition: opacity .2s;
+}
+.navbar__logo:hover { opacity: .85; }
+.navbar__logo:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 4px;
+}
+
+.navbar__logo-sigle {
+  width: 30px;
+  height: auto;
+}
+
+.navbar__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--ff-white);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.navbar__logo-dash {
+  color: var(--ff-pixel-green);
+}
+
+/* Badge "Carrières" (site carrières uniquement) */
+.navbar__logo-badge {
+  font-family: var(--font-mono);
+  font-size: .45rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: var(--ff-pixel-green);
+  color: var(--ff-bg-deep);
+  padding: .2em .55em;
+  border-radius: 3px;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: 4px;
+  margin-left: .25rem;
+}
+
+/* ── Navigation desktop ────────────────────────────────────── */
+.navbar__nav {
+  display: none;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .navbar__nav {
+    display: flex;
+  }
+}
+
+.navbar__nav-list {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.navbar__nav-link {
+  position: relative;
+  padding: .5rem .75rem;
+  font-size: .875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255, 255, 255, .75);
+  border-radius: 4px;
+  transition: color .25s;
+}
+
+/* Underline slide */
+.navbar__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: .75rem; right: .75rem;
+  height: 1.5px;
+  background: var(--ff-pixel-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--ease-out);
+  border-radius: 99px;
+}
+
+.navbar__nav-link:hover { color: var(--ff-white); }
+.navbar__nav-link:hover::after { transform: scaleX(1); }
+.navbar__nav-link[aria-current="page"] { color: var(--ff-white); }
+.navbar__nav-link[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ── Actions (CTA + burger) ────────────────────────────────── */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* CTA "Espace Client" */
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ff-white);
+  border: 1.5px solid rgba(255, 255, 255, .35);
+  border-radius: 4px;
+  transition: all .25s var(--ease-out);
+}
+.navbar__cta:hover {
+  color: var(--ff-bg-deep);
+  background: var(--ff-pixel-green);
+  border-color: var(--ff-pixel-green);
+  transform: translateY(-1px);
+}
+.navbar__cta:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 3px;
+}
+
+/* Lien "← Site principal" (site carrières) */
+.navbar__back {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .9rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255, 255, 255, .75);
+  border: 1.5px solid rgba(255, 255, 255, .2);
+  border-radius: 4px;
+  transition: all .2s;
+}
+.navbar__back:hover {
+  color: var(--ff-white);
+  border-color: rgba(255, 255, 255, .5);
+}
+
+/* ── Burger ────────────────────────────────────────────────── */
+.navbar__burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  transition: background .2s;
+}
+.navbar__burger:hover {
+  background: rgba(255, 255, 255, .08);
+}
+.navbar__burger:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .navbar__burger { display: none; }
+}
+
+.navbar__burger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ff-white);
+  border-radius: 99px;
+  transition:
+    transform .45s var(--ease-in-out),
+    opacity   .25s;
+}
+
+/* État ouvert — croix */
+.navbar__burger[aria-expanded="true"] .navbar__burger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__burger[aria-expanded="true"] .navbar__burger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar__burger[aria-expanded="true"] .navbar__burger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Menu mobile plein écran ───────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--ff-bg-deep);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  /* État fermé */
+  opacity: 0;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity    .45s var(--ease-in-out),
+    transform  .45s var(--ease-in-out),
+    visibility .45s;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.mobile-menu__nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  padding: 80px 1.5rem 3rem;
+  gap: 2rem;
+}
+
+@media (min-width: 480px) {
+  .mobile-menu__nav {
+    padding-inline: 3rem;
+  }
+}
+
+/* Watermark sigle en fond */
+.mobile-menu__watermark {
+  position: absolute;
+  right: -60px;
+  bottom: -40px;
+  opacity: .03;
+  pointer-events: none;
+}
+.mobile-menu__watermark img {
+  width: 380px;
+  filter: invert(1);
+}
+
+/* Liste liens */
+.mobile-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.mobile-menu__item {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity   .45s var(--ease-out),
+    transform .45s var(--ease-out);
+  transition-delay: calc(var(--item-index, 0) * 80ms + 100ms);
+}
+
+.mobile-menu.is-open .mobile-menu__item {
+  opacity: 1;
+  transform: none;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ff-border-dark);
+  color: rgba(255, 255, 255, .6);
+  transition: color .25s, padding-left .2s;
+}
+.mobile-menu__link:hover {
+  color: var(--ff-white);
+  padding-left: .5rem;
+}
+.mobile-menu__link[aria-current="page"] {
+  color: var(--ff-pixel-green);
+}
+
+.mobile-menu__link-label {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 8vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.mobile-menu__link-arrow {
+  font-size: 2rem;
+  color: var(--ff-pixel-green);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity   .2s,
+    transform .2s var(--ease-spring);
+}
+.mobile-menu__link:hover .mobile-menu__link-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+/* CTA dans le menu mobile */
+.mobile-menu__cta-wrap {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   .45s var(--ease-out),
+    transform .45s var(--ease-out);
+  transition-delay: calc(5 * 80ms + 100ms);
+}
+.mobile-menu.is-open .mobile-menu__cta-wrap {
+  opacity: 1;
+  transform: none;
+}
+
+.mobile-menu__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .875rem 1.75rem;
+  font-size: .875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--ff-bg-deep);
+  background: var(--ff-pixel-green);
+  border-radius: 4px;
+  transition: background .2s, transform .2s var(--ease-spring);
+}
+.mobile-menu__cta:hover {
+  background: var(--ff-pixel-green-dark);
+  transform: translateY(-2px);
+}

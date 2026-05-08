@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- ═══════════════════════════════════════════════════════════
+       META TECHNIQUES — Encoding, viewport, base
+       ═══════════════════════════════════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SEO — Titre, description, indexation
+       ═══════════════════════════════════════════════════════════ -->
+  <title>Flex-Flux — Mobilité Urbaine · Tech · Humain</title>
+  <meta name="description" content="Flex-Flux déploie les ressources humaines et technologiques qui font tourner les réseaux de transport public. Agents de maîtrise, humanisation, progiciels d'aide à la production.">
+  <meta name="keywords" content="transport public, mobilité urbaine, agents de maîtrise d'exploitation, humanisation, progiciels transport, Flexquentation, Flex-Sub">
+  <meta name="author" content="Flex-Flux">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical (à ajuster avec ton domaine final) -->
+  <link rel="canonical" href="https://www.flex-flux.com/">
+
+  <!-- Langue alternative (préparation EN — à activer plus tard) -->
+  <link rel="alternate" hreflang="fr" href="https://www.flex-flux.com/">
+  <link rel="alternate" hreflang="x-default" href="https://www.flex-flux.com/">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       OPEN GRAPH — Partages Facebook / LinkedIn
+       TODO Lot 4 : créer une og-image dédiée 1200×630px
+       ═══════════════════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="fr_FR">
+  <meta property="og:site_name"   content="Flex-Flux">
+  <meta property="og:title"       content="Flex-Flux — Mobilité Urbaine · Tech · Humain">
+  <meta property="og:description" content="Partenaire technologique et humain des opérateurs de transport public. Agents de maîtrise, humanisation, progiciels d'aide à la production.">
+  <meta property="og:url"         content="https://www.flex-flux.com/">
+  <meta property="og:image"       content="https://www.flex-flux.com/assets/images/banniere-flexflux.jpg">
+  <meta property="og:image:width"  content="2000">
+  <meta property="og:image:height" content="400">
+  <meta property="og:image:alt"   content="Flex-Flux — bannière mobilité urbaine smart city">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWITTER CARDS — Partages X / Twitter
+       ═══════════════════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Flex-Flux — Mobilité Urbaine · Tech · Humain">
+  <meta name="twitter:description" content="Partenaire technologique et humain des opérateurs de transport public.">
+  <meta name="twitter:image"       content="https://www.flex-flux.com/assets/images/banniere-flexflux.jpg">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       UI MOBILE — Couleur barre navigateur, app web
+       ═══════════════════════════════════════════════════════════ -->
+  <meta name="theme-color" content="#0D1F33">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FAVICON — TODO Lot 4
+       ═══════════════════════════════════════════════════════════ -->
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png"> -->
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png"> -->
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png"> -->
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PERFORMANCE — Preconnect & Preload critiques
+       ═══════════════════════════════════════════════════════════ -->
+  <!-- Preconnect Google Fonts pour gagner ~150ms sur le LCP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Preload de la bannière hero (LCP critique sur la home) -->
+  <link rel="preload" as="image" href="assets/images/banniere-flexflux.jpg" fetchpriority="high">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FEUILLES DE STYLE — Ordre = base → composants → sections
+       ═══════════════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/marquee.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/solutions.css">
+  <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="css/approche.css">
+  <link rel="stylesheet" href="css/cta.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+      <img class="navbar__logo-sigle"
+           src="assets/images/flex-flux-sigle-blanc.png"
+           alt="" aria-hidden="true" width="30" height="27">
+      <span class="navbar__logo-text">
+        <span class="navbar__logo-dash">Flex</span>-Flux
+      </span>
+    </a>
+
+    <nav class="navbar__nav" role="navigation" aria-label="Navigation principale">
+      <ul class="navbar__nav-list" role="list">
+        <li><a class="navbar__nav-link" href="index.html" aria-current="page">Accueil</a></li>
+        <li><a class="navbar__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="navbar__nav-link" href="notre-approche.html">Notre Approche</a></li>
+        <li><a class="navbar__nav-link" href="references.html">Références</a></li>
+        <li><a class="navbar__nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="navbar__actions">
+      <a class="navbar__cta" href="espace-client.html">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <rect x="3" y="6" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        Espace Client
+      </a>
+      <button class="navbar__burger" id="burger-btn" type="button"
+              aria-label="Ouvrir le menu" aria-expanded="false"
+              aria-controls="mobile-menu">
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobile-menu" role="dialog"
+     aria-modal="true" aria-label="Menu principal" hidden>
+  <div class="mobile-menu__watermark" aria-hidden="true">
+    <img src="assets/images/flex-flux-sigle-blanc.png" alt="" width="380">
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Navigation mobile">
+    <ul class="mobile-menu__list" role="list">
+      <li class="mobile-menu__item" style="--item-index:0">
+        <a class="mobile-menu__link" href="index.html" aria-current="page">
+          <span class="mobile-menu__link-label">Accueil</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:1">
+        <a class="mobile-menu__link" href="nos-solutions.html">
+          <span class="mobile-menu__link-label">Nos Solutions</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:2">
+        <a class="mobile-menu__link" href="notre-approche.html">
+          <span class="mobile-menu__link-label">Notre Approche</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:3">
+        <a class="mobile-menu__link" href="references.html">
+          <span class="mobile-menu__link-label">Références</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:4">
+        <a class="mobile-menu__link" href="contact.html">
+          <span class="mobile-menu__link-label">Contact</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-menu__cta-wrap">
+      <a class="mobile-menu__cta" href="espace-client.html">Espace Client</a>
+    </div>
+  </nav>
+</div>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main-content" tabindex="-1">
+
+ <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__bg"        role="presentation" aria-hidden="true"></div>
+    <div class="hero__overlay"   role="presentation" aria-hidden="true"></div>
+    <div class="hero__ambient"   role="presentation" aria-hidden="true"></div>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__spotlight" aria-hidden="true"></div>
+
+    <img class="hero__deco"
+         src="assets/images/flex-flux-sigle-blanc.png"
+         alt="" aria-hidden="true" width="600" loading="eager">
+
+    <div class="hero__content">
+      <span class="hero__label">Mobilité Urbaine · Tech · Humain</span>
+      <h1 class="hero__title" id="hero-title">
+        Vos opérations,<br>notre expertise.
+      </h1>
+      <p class="hero__sub">
+        Flex-Flux déploie les ressources humaines et technologiques
+        qui font tourner les réseaux de transport public.
+      </p>
+      <div class="hero__actions">
+        <a class="btn-primary" href="nos-solutions.html">Découvrir nos solutions</a>
+        <a class="btn-ghost"   href="contact.html">Nous contacter</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <svg class="hero__scroll-icon" width="20" height="12" viewBox="0 0 20 12" fill="none">
+        <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="hero__scroll-label">Défiler</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" role="marquee"
+       aria-label="Domaines d'expertise Flex-Flux">
+    <div class="marquee__track">
+      <span class="marquee__item">Mobilité Urbaine</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Progiciels</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Agents d'Exploitation</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Humanisation</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Prévention</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Smart City</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item">Transport Public</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <!-- Doublon pour boucle seamless -->
+      <span class="marquee__item" aria-hidden="true">Mobilité Urbaine</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Progiciels</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Agents d'Exploitation</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Humanisation</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Prévention</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Smart City</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+      <span class="marquee__item" aria-hidden="true">Transport Public</span>
+      <span class="marquee__sep" aria-hidden="true">·</span>
+    </div>
+  </div>
+
+  <!-- NOS SOLUTIONS -->
+  <section class="solutions" id="nos-solutions" aria-labelledby="solutions-title">
+    <div class="solutions__container">
+      <header class="solutions__header">
+        <span class="section-label reveal">Nos Solutions</span>
+        <h2 class="solutions__title reveal" id="solutions-title" data-delay="1">
+          Un partenaire complet,<br>à chaque niveau d'exploitation.
+        </h2>
+        <p class="solutions__intro reveal" data-delay="2">
+          De la ressource humaine au progiciel sur-mesure, Flex-Flux
+          intervient là où votre réseau en a besoin.
+        </p>
+      </header>
+
+      <div class="solutions__grid">
+
+        <!-- Card 1 -->
+        <article class="sol-card reveal"
+                 style="--card-accent: #2771AE"
+                 data-delay="1"
+                 aria-labelledby="sol-1-title">
+          <div class="sol-card__icon-wrap">
+            <img class="sol-card__icon-img"
+                 src="assets/images/téléchargement (3).jpg"
+                 alt="" aria-hidden="true"
+                 width="72" height="72" loading="lazy">
+            <div class="sol-card__pixel-grid" aria-hidden="true">
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+            </div>
+          </div>
+          <span class="sol-card__tag">Exploitation</span>
+          <h3 class="sol-card__title" id="sol-1-title">
+            Agents de Maîtrise d'Exploitation
+          </h3>
+          <p class="sol-card__body">
+            Déploiement d'agents qualifiés pour superviser et sécuriser
+            les opérations de transport au quotidien, en temps réel.
+          </p>
+          <a class="sol-card__link" href="nos-solutions.html">
+            En savoir plus
+            <span class="sol-card__link-arrow" aria-hidden="true">→</span>
+          </a>
+          <span class="sol-card__num" aria-hidden="true">01</span>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="sol-card reveal"
+                 style="--card-accent: #B5CC18"
+                 data-delay="2"
+                 aria-labelledby="sol-2-title">
+          <div class="sol-card__icon-wrap">
+            <img class="sol-card__icon-img"
+                 src="assets/images/téléchargement (4).jpg"
+                 alt="" aria-hidden="true"
+                 width="72" height="72" loading="lazy">
+            <div class="sol-card__pixel-grid" aria-hidden="true">
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+            </div>
+          </div>
+          <span class="sol-card__tag">Humain</span>
+          <h3 class="sol-card__title" id="sol-2-title">
+            Humanisation &amp; Prévention
+          </h3>
+          <p class="sol-card__body">
+            Équipes de médiation et de prévention pour améliorer
+            l'expérience voyageur et créer un environnement sûr.
+          </p>
+          <a class="sol-card__link" href="nos-solutions.html">
+            En savoir plus
+            <span class="sol-card__link-arrow" aria-hidden="true">→</span>
+          </a>
+          <span class="sol-card__num" aria-hidden="true">02</span>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="sol-card reveal"
+                 style="--card-accent: #2771AE"
+                 data-delay="3"
+                 aria-labelledby="sol-3-title">
+          <div class="sol-card__icon-wrap">
+            <img class="sol-card__icon-img"
+                 src="assets/images/téléchargement (5).jpg"
+                 alt="" aria-hidden="true"
+                 width="72" height="72" loading="lazy">
+            <div class="sol-card__pixel-grid" aria-hidden="true">
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+            </div>
+          </div>
+          <span class="sol-card__tag">Tech</span>
+          <h3 class="sol-card__title" id="sol-3-title">
+            Progiciels d'Aide à la Production
+          </h3>
+          <p class="sol-card__body">
+            Flexquentation et Flex-Sub : outils développés en interne
+            pour optimiser la gestion des flux et des ressources.
+          </p>
+          <a class="sol-card__link" href="nos-solutions.html">
+            En savoir plus
+            <span class="sol-card__link-arrow" aria-hidden="true">→</span>
+          </a>
+          <span class="sol-card__num" aria-hidden="true">03</span>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="sol-card reveal"
+                 style="--card-accent: #B5CC18"
+                 data-delay="4"
+                 aria-labelledby="sol-4-title">
+          <div class="sol-card__icon-wrap">
+            <img class="sol-card__icon-img"
+                 src="assets/images/téléchargement (2).jpg"
+                 alt="" aria-hidden="true"
+                 width="72" height="72" loading="lazy">
+            <div class="sol-card__pixel-grid" aria-hidden="true">
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+              <span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span><span class="pixel-cell"></span>
+            </div>
+          </div>
+          <span class="sol-card__tag">Innovation</span>
+          <h3 class="sol-card__title" id="sol-4-title">
+            Technologies Complémentaires
+          </h3>
+          <p class="sol-card__body">
+            Intégration de solutions tech sur mesure pour compléter
+            l'écosystème numérique de votre réseau de transport.
+          </p>
+          <a class="sol-card__link" href="nos-solutions.html">
+            En savoir plus
+            <span class="sol-card__link-arrow" aria-hidden="true">→</span>
+          </a>
+          <span class="sol-card__num" aria-hidden="true">04</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section class="stats" id="chiffres-cles" aria-labelledby="stats-title">
+    <svg class="stats__network" viewBox="0 0 1200 300" fill="none"
+         aria-hidden="true" focusable="false">
+      <circle cx="120"  cy="150" r="3.5" fill="#2771AE"/>
+      <circle cx="300"  cy="60"  r="3.5" fill="#2771AE"/>
+      <circle cx="500"  cy="220" r="3.5" fill="#B5CC18"/>
+      <circle cx="700"  cy="70"  r="3.5" fill="#2771AE"/>
+      <circle cx="900"  cy="200" r="3.5" fill="#B5CC18"/>
+      <circle cx="1080" cy="100" r="3.5" fill="#2771AE"/>
+      <line x1="120"  y1="150" x2="300"  y2="60"  stroke="#2771AE" stroke-width=".9"/>
+      <line x1="300"  y1="60"  x2="500"  y2="220" stroke="#2771AE" stroke-width=".9"/>
+      <line x1="500"  y1="220" x2="700"  y2="70"  stroke="#2771AE" stroke-width=".9"/>
+      <line x1="700"  y1="70"  x2="900"  y2="200" stroke="#2771AE" stroke-width=".9"/>
+      <line x1="900"  y1="200" x2="1080" y2="100" stroke="#2771AE" stroke-width=".9"/>
+    </svg>
+    <div class="stats__container">
+      <h2 class="sr-only" id="stats-title">Chiffres clés Flex-Flux</h2>
+      <div class="stats__grid" id="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-item__value"
+                data-count="20" data-suffix="+"
+                aria-label="Plus de 20 années d'expertise">0</span>
+          <span class="stat-item__label">Années d'expertise<br>transport public</span>
+        </div>
+        <div class="stat-item reveal" data-delay="1">
+          <span class="stat-item__value"
+                data-count="500" data-suffix="+"
+                aria-label="Plus de 500 agents déployés">0</span>
+          <span class="stat-item__label">Agents déployés<br>annuellement</span>
+        </div>
+        <div class="stat-item reveal" data-delay="2">
+          <span class="stat-item__value"
+                data-count="15"
+                aria-label="15 réseaux partenaires">0</span>
+          <span class="stat-item__label">Réseaux de transport<br>partenaires</span>
+        </div>
+        <div class="stat-item reveal" data-delay="3">
+          <span class="stat-item__value"
+                data-count="3"
+                aria-label="3 progiciels développés en interne">0</span>
+          <span class="stat-item__label">Progiciels développés<br>en interne</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE APPROCHE -->
+  <section class="approach" id="notre-approche" aria-labelledby="approach-title">
+
+    <div class="approach__container">
+
+      <!-- Colonne gauche : citation + image -->
+      <div class="approach__left">
+
+        <!-- Citation éditoriale signature, au-dessus de l'image -->
+        <div class="approach__statement-wrap">
+          <h2 class="approach__statement" aria-hidden="true">
+            <span class="approach__statement-flex">Flex</span><span class="approach__statement-dash">-</span><span class="approach__statement-flux">Flux</span><span class="approach__statement-dot" aria-hidden="true"></span>
+          </h2>
+          <span class="sr-only">Flex-Flux</span>
+        </div>
+
+        <!-- Image avec clip-path reveal -->
+        <div class="approach__image">
+          <img src="assets/images/banniere-flexflux-2.jpg"
+               alt="Illustration blueprint d'un bus en ville — l'expertise terrain Flex-Flux"
+               width="600" height="450" loading="lazy">
+          <div class="approach__image-overlay" aria-hidden="true"></div>
+          <div class="approach__image-corner"  aria-hidden="true"></div>
+        </div>
+
+      </div>
+
+      <!-- Colonne droite : texte -->
+      <div class="approach__text">
+        <span class="section-label reveal">Notre Approche</span>
+        <h3 class="approach__title reveal" id="approach-title" data-delay="1">
+          Humain d'abord,<br>technologie ensuite.
+        </h3>
+        <p class="approach__body reveal" data-delay="2">
+          Chez Flex-Flux, nous croyons que la performance d'un réseau de transport
+          repose avant tout sur des femmes et des hommes bien formés, bien encadrés
+          — et soutenus par des outils qui font vraiment la différence.
+        </p>
+        <p class="approach__body reveal" data-delay="2">
+          C'est cette conviction qui guide chaque déploiement : allier
+          l'<span class="approach__accent-flex">expertise terrain</span>
+          à l'<span class="approach__accent-flux">innovation technologique</span>.
+        </p>
+        <a class="approach__cta reveal" href="notre-approche.html" data-delay="3">
+          Notre approche complète
+          <svg class="approach__cta-arrow" width="16" height="16" viewBox="0 0 16 16"
+               fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="cta-section__divider" aria-hidden="true"></div>
+
+    <img class="cta-section__deco"
+         src="assets/images/flex-flux-sigle-blanc.png"
+         alt="" aria-hidden="true" width="900" loading="lazy">
+
+    <div class="cta-section__container">
+      <span class="section-label reveal">Travaillons ensemble</span>
+      <h2 class="cta-section__title reveal" id="cta-title" data-delay="1">
+        Parlons de vos besoins d'exploitation.
+      </h2>
+      <p class="cta-section__sub reveal" data-delay="2">
+        Un projet, un déploiement urgent, une question technique ?
+        Notre équipe répond sous 24h.
+      </p>
+      <div class="cta-section__actions reveal" data-delay="3">
+        <a class="btn-primary" href="contact.html">Nous contacter</a>
+        <a class="btn-ghost"   href="carrieres/index.html">Rejoindre l'équipe</a>
+      </div>
+      <div class="cta-section__tel reveal" data-delay="4">
+        <svg class="cta-section__tel-icon" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.55 6.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <a href="tel:+33173306012">01 73 30 60 12</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo" aria-label="Pied de page Flex-Flux">
+  <div class="footer__top">
+
+    <div class="footer__brand">
+      <a class="footer__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+        <img class="footer__logo-sigle"
+             src="assets/images/flex-flux-sigle-blanc.png"
+             alt="" aria-hidden="true" width="32">
+        <span class="footer__logo-text">
+          <span class="footer__logo-dash">Flex</span>-Flux
+        </span>
+      </a>
+      <p class="footer__baseline">
+        Partenaire technologique et humain des opérateurs de transport public.
+      </p>
+      <nav class="footer__social" aria-label="Réseaux sociaux">
+        <a class="footer__social-link"
+           href="https://linkedin.com/company/flex-flux"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Flex-Flux sur LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a class="footer__social-link"
+           href="https://twitter.com/flexflux"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Flex-Flux sur X (Twitter)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Navigation footer">
+      <span class="footer__col-title">Navigation</span>
+      <ul class="footer__nav-list" role="list">
+        <li><a class="footer__nav-link" href="index.html">Accueil</a></li>
+        <li><a class="footer__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="footer__nav-link" href="notre-approche.html">Notre Approche</a></li>
+        <li><a class="footer__nav-link" href="references.html">Références</a></li>
+        <li><a class="footer__nav-link" href="contact.html">Contact</a></li>
+        <li><a class="footer__nav-link" href="carrieres/index.html">Rejoindre l'équipe</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <span class="footer__col-title">Coordonnées</span>
+      <address style="font-style: normal">
+        <ul class="footer__contact-list" role="list">
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>38 Rue Gallieni<br>
+              92600 Asnières-sur-Seine</span>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.55 6.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a class="footer__contact-link" href="tel:+33173306012">01 73 30 60 12</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a class="footer__contact-link" href="mailto:contact@flex-flux.com">
+              contact@flex-flux.com
+            </a>
+          </li>
+        </ul>
+      </address>
+    </div>
+
+    <div>
+      <span class="footer__col-title">Accès Rapide</span>
+      <div class="footer__products">
+        <a class="footer__product-card" href="espace-client.html"
+           aria-label="Accéder à Flexquentation">
+          <span class="footer__product-dot" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flexquentation</div>
+            <div class="footer__product-desc">Gestion des flux voyageurs</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="footer__product-card" href="espace-client.html"
+           aria-label="Accéder à Flex-Sub">
+          <span class="footer__product-dot footer__product-dot--blue" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flex-Sub</div>
+            <div class="footer__product-desc">Gestion des remplacements</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__legal">
+      © 2026 Flex-Flux. Tous droits réservés.
+      <span class="footer__legal-sep">—</span>
+      <a href="#">Mentions légales</a>
+      <span class="footer__legal-sep">·</span>
+      <a href="#">Confidentialité</a>
+      <span class="footer__legal-sep">·</span>
+      SIRET&nbsp;: 824&nbsp;806&nbsp;285&nbsp;00014
+    </p>
+    <span class="footer__credit" aria-hidden="true">Flex-Flux Design System v1.0</span>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
+<script src="js/nav.js"></script>
+<script defer src="js/hero.js"></script>
+<script defer src="js/approche.js"></script>
+<script>
+  (function () {
+    'use strict';
+
+    /* Scroll Reveal */
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+      obs.observe(el);
+    });
+
+    /* Counter animation easeOutExpo */
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    function animateCounter(el) {
+      var target   = parseInt(el.dataset.count, 10);
+      var suffix   = el.dataset.suffix || '';
+      var duration = 1200;
+      var startTs  = null;
+      el.dataset.animated = 'true';
+
+      function step(ts) {
+        if (!startTs) startTs = ts;
+        var progress = Math.min((ts - startTs) / duration, 1);
+        el.textContent = Math.round(easeOutExpo(progress) * target) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target + suffix;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-count]').forEach(function (el) {
+        el.textContent = el.dataset.count + (el.dataset.suffix || '');
+      });
+    } else {
+      var grid = document.getElementById('stats-grid');
+      if (grid) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.querySelectorAll('[data-count]').forEach(function (c) {
+              if (!c.dataset.animated) animateCounter(c);
+            });
+          });
+        }, { threshold: 0.35 }).observe(grid);
+      }
+    }
+
+    /* Pixel Reveal */
+    document.querySelectorAll('.sol-card').forEach(function (card) {
+      var cells = Array.from(card.querySelectorAll('.pixel-cell'));
+      card.addEventListener('mouseenter', function () {
+        cells.forEach(function (cell) {
+          cell.classList.remove('is-off');
+          cell.style.transitionDelay = Math.floor(Math.random() * 380) + 'ms';
+          cell.classList.add('is-lit');
+        });
+      });
+      card.addEventListener('mouseleave', function () {
+        cells.forEach(function (cell) {
+          cell.classList.remove('is-lit');
+          cell.classList.add('is-off');
+          cell.addEventListener('transitionend', function () {
+            cell.classList.remove('is-off');
+          }, { once: true });
+        });
+      });
+    });
+
+  }());
+</script>
+
+</body>
+</html>

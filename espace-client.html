@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Espace Client Flex-Flux — Accès sécurisé aux progiciels Flexquentation et Flex-Sub.">
+  <title>Espace Client — Flex-Flux</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <style>
+    /* ── Hero ──────────────────────────────────────────────── */
+    .page-hero {
+      padding-top: calc(var(--navbar-h-mobile) + 3rem);
+      padding-bottom: 4rem;
+      background: var(--ff-bg-deep);
+      position: relative; overflow: hidden;
+    }
+    @media (min-width: 1024px) {
+      .page-hero { padding-top: calc(var(--navbar-h-desk) + 4rem); }
+    }
+    .page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(39,113,174,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero__container {
+      max-width: 900px; margin-inline: auto;
+      padding-inline: 1.5rem; position: relative;
+      z-index: 1; text-align: center;
+    }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800; letter-spacing: -.04em; line-height: .92;
+      color: var(--ff-white); margin-bottom: 1rem;
+    }
+    .page-hero__sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.7;
+      color: rgba(255,255,255,.6); max-width: 55ch;
+      margin-inline: auto;
+    }
+
+    /* ── Accès progiciels ──────────────────────────────────── */
+    .acces-section {
+      padding: 5rem 0 6rem;
+      background: var(--ff-off-white);
+    }
+    .acces-section__container {
+      max-width: 900px; margin-inline: auto; padding-inline: 1.5rem;
+    }
+    .acces-section__intro {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .acces-section__intro-text {
+      font-size: 1rem; color: var(--ff-grey-dark); line-height: 1.7;
+    }
+    .acces-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) {
+      .acces-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+
+    /* Card produit */
+    .produit-card {
+      background: var(--ff-white);
+      border: 1px solid var(--ff-grey-light);
+      border-radius: 10px;
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 1.25rem;
+      position: relative; overflow: hidden;
+      transition: transform .25s var(--ease-out), box-shadow .25s, border-color .25s;
+    }
+    .produit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.10);
+      border-color: var(--ff-pixel-green);
+    }
+    .produit-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-color, var(--ff-blue));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s var(--ease-out);
+    }
+    .produit-card:hover::before { transform: scaleX(1); }
+
+    .produit-card__dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--card-color, var(--ff-blue));
+      box-shadow: 0 0 10px var(--card-color, var(--ff-blue));
+      flex-shrink: 0;
+    }
+
+    .produit-card__name {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      letter-spacing: -.03em; color: var(--ff-navy);
+      line-height: 1;
+    }
+
+    .produit-card__tagline {
+      font-family: var(--font-mono); font-size: .625rem;
+      text-transform: uppercase; letter-spacing: .15em;
+      color: var(--card-color, var(--ff-blue));
+      margin-top: -.5rem;
+    }
+
+    .produit-card__desc {
+      font-size: .9375rem; line-height: 1.7;
+      color: var(--ff-grey-dark); flex: 1;
+    }
+
+    .produit-card__features {
+      list-style: none; width: 100%;
+    }
+    .produit-card__features li {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .875rem; color: var(--ff-grey-mid);
+      padding: .375rem 0;
+      border-bottom: 1px solid var(--ff-grey-light);
+    }
+    .produit-card__features li:last-child { border-bottom: none; }
+    .produit-card__features li::before {
+      content: '→'; color: var(--ff-pixel-green);
+      font-weight: 700; flex-shrink: 0;
+    }
+
+    .produit-card__btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; width: 100%;
+      padding: 1rem 1.5rem;
+      background: var(--card-color, var(--ff-blue));
+      color: var(--ff-white);
+      font-weight: 700; font-size: .9375rem;
+      text-transform: uppercase; letter-spacing: .08em;
+      border-radius: 6px; border: none; cursor: pointer;
+      margin-top: auto;
+      transition: filter .2s, transform .2s var(--ease-spring), box-shadow .2s;
+    }
+    .produit-card__btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+    .produit-card__btn:focus-visible {
+      outline: 2px solid var(--ff-pixel-green);
+      outline-offset: 3px;
+    }
+
+    /* Mention sécurité */
+    .acces-section__security {
+      display: flex; align-items: center; justify-content: center;
+      gap: .625rem; margin-top: 2.5rem;
+      font-family: var(--font-mono); font-size: .6875rem;
+      text-transform: uppercase; letter-spacing: .12em;
+      color: var(--ff-grey-mid);
+    }
+    .acces-section__security svg { color: var(--ff-pixel-green); }
+
+    /* ── Besoin d'aide ─────────────────────────────────────── */
+    .aide-section {
+      padding: 4rem 0;
+      background: var(--ff-white);
+      border-top: 1px solid var(--ff-grey-light);
+    }
+    .aide-section__container {
+      max-width: 900px; margin-inline: auto;
+      padding-inline: 1.5rem;
+      display: grid; grid-template-columns: 1fr;
+      gap: 2rem; align-items: center;
+    }
+    @media (min-width: 768px) {
+      .aide-section__container { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    .aide-section__title {
+      font-family: var(--font-display);
+      font-size: 1.75rem; font-weight: 800;
+      letter-spacing: -.02em; color: var(--ff-navy);
+      margin-bottom: .75rem;
+    }
+    .aide-section__body {
+      font-size: .9375rem; line-height: 1.7;
+      color: var(--ff-grey-dark); margin-bottom: 1.5rem;
+    }
+    .aide-section__contact {
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .aide-contact-item {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .9375rem; color: var(--ff-grey-dark);
+    }
+    .aide-contact-item svg { color: var(--ff-pixel-green); flex-shrink: 0; }
+    .aide-contact-item a {
+      color: var(--ff-blue); font-weight: 500; transition: color .2s;
+    }
+    .aide-contact-item a:hover { color: var(--ff-blue-dark); }
+
+    .aide-section__hours {
+      background: var(--ff-off-white);
+      border: 1px solid var(--ff-grey-light);
+      border-radius: 8px; padding: 2rem;
+    }
+    .aide-section__hours-title {
+      font-family: var(--font-mono); font-size: .6875rem;
+      text-transform: uppercase; letter-spacing: .15em;
+      color: var(--ff-pixel-green); margin-bottom: 1rem; display: block;
+    }
+    .aide-section__hours-list {
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .aide-section__hours-row {
+      display: flex; justify-content: space-between;
+      font-size: .875rem; color: var(--ff-grey-dark);
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--ff-grey-light);
+    }
+    .aide-section__hours-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .aide-section__hours-row span:first-child { font-weight: 600; color: var(--ff-navy); }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+      <img class="navbar__logo-sigle"
+           src="assets/images/flex-flux-sigle-blanc.png"
+           alt="" aria-hidden="true" width="30">
+      <span class="navbar__logo-text">
+        <span class="navbar__logo-dash">Flex</span>-Flux
+      </span>
+    </a>
+    <nav class="navbar__nav" role="navigation" aria-label="Navigation principale">
+      <ul class="navbar__nav-list" role="list">
+        <li><a class="navbar__nav-link" href="index.html">Accueil</a></li>
+        <li><a class="navbar__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="navbar__nav-link" href="notre-approche.html">Notre Approche</a></li>
+        <li><a class="navbar__nav-link" href="references.html">Références</a></li>
+        <li><a class="navbar__nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="navbar__actions">
+      <a class="navbar__cta" href="espace-client.html" aria-current="page">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <rect x="3" y="6" width="8" height="6" rx="1"
+                stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        Espace Client
+      </a>
+      <button class="navbar__burger" id="burger-btn" type="button"
+              aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobile-menu" role="dialog"
+     aria-modal="true" aria-label="Menu principal" hidden>
+  <div class="mobile-menu__watermark" aria-hidden="true">
+    <img src="assets/images/flex-flux-sigle-blanc.png" alt="" width="380">
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Navigation mobile">
+    <ul class="mobile-menu__list" role="list">
+      <li class="mobile-menu__item" style="--item-index:0">
+        <a class="mobile-menu__link" href="index.html">
+          <span class="mobile-menu__link-label">Accueil</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:1">
+        <a class="mobile-menu__link" href="nos-solutions.html">
+          <span class="mobile-menu__link-label">Nos Solutions</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:2">
+        <a class="mobile-menu__link" href="notre-approche.html">
+          <span class="mobile-menu__link-label">Notre Approche</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:3">
+        <a class="mobile-menu__link" href="references.html">
+          <span class="mobile-menu__link-label">Références</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:4">
+        <a class="mobile-menu__link" href="contact.html">
+          <span class="mobile-menu__link-label">Contact</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-menu__cta-wrap">
+      <a class="mobile-menu__cta" href="espace-client.html">Espace Client</a>
+    </div>
+  </nav>
+</div>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main-content" tabindex="-1">
+
+  <!-- Hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__container">
+      <span class="section-label">Espace Client</span>
+      <h1 class="page-hero__title" id="page-title">
+        Accès aux logiciels<br>Flex-Flux
+      </h1>
+      <p class="page-hero__sub">
+        Vous avez ici un accès sécurisé aux progiciels
+        développés par Flex-Flux pour la gestion de vos réseaux.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accès progiciels -->
+  <section class="acces-section" aria-labelledby="acces-title">
+    <div class="acces-section__container">
+
+      <div class="acces-section__intro">
+        <h2 class="sr-only" id="acces-title">Choisir votre application</h2>
+        <p class="acces-section__intro-text">
+          Sélectionnez le progiciel auquel vous souhaitez accéder.
+          Votre identifiant vous a été communiqué par votre responsable.
+        </p>
+      </div>
+
+      <div class="acces-grid">
+
+        <!-- Flexquentation -->
+        <div class="produit-card reveal"
+             style="--card-color: #2771AE"
+             data-delay="1">
+          <div class="produit-card__dot" aria-hidden="true"></div>
+          <div>
+            <div class="produit-card__name">Flexquentation</div>
+            <div class="produit-card__tagline">Gestion des flux voyageurs</div>
+          </div>
+          <p class="produit-card__desc">
+            Outil de comptage, d'analyse et de visualisation des flux
+            de fréquentation sur vos lignes et points d'arrêt.
+          </p>
+          <ul class="produit-card__features">
+            <li>Comptages en temps réel</li>
+            <li>Tableaux de bord personnalisables</li>
+            <li>Exports et rapports automatisés</li>
+            <li>Accès multi-utilisateurs</li>
+          </ul>
+          <a class="produit-card__btn"
+             href="https://flexquentation.flex-flux.com"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Accéder à Flexquentation — s'ouvre dans un nouvel onglet">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Accéder à Flexquentation
+          </a>
+        </div>
+
+        <!-- Flex-Sub -->
+        <div class="produit-card reveal"
+             style="--card-color: #B5CC18"
+             data-delay="2">
+          <div class="produit-card__dot" aria-hidden="true"></div>
+          <div>
+            <div class="produit-card__name">Flex-Sub</div>
+            <div class="produit-card__tagline">Gestion des remplacements</div>
+          </div>
+          <p class="produit-card__desc">
+            Application de gestion des remplacements, des absences
+            et de la disponibilité des agents sur vos réseaux.
+          </p>
+          <ul class="produit-card__features">
+            <li>Planification des remplacements</li>
+            <li>Gestion des absences et disponibilités</li>
+            <li>Alertes et notifications automatiques</li>
+            <li>Historique et reporting RH</li>
+          </ul>
+          <a class="produit-card__btn"
+             href="https://flexsub.flex-flux.com"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Accéder à Flex-Sub — s'ouvre dans un nouvel onglet"
+             style="background: var(--ff-navy); color: var(--ff-white);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Accéder à Flex-Sub
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Mention sécurité -->
+      <div class="acces-section__security" aria-label="Connexion sécurisée">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Connexion sécurisée HTTPS — Vos données sont protégées
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Besoin d'aide -->
+  <section class="aide-section" aria-labelledby="aide-title">
+    <div class="aide-section__container">
+
+      <div class="reveal">
+        <h2 class="aide-section__title" id="aide-title">
+          Besoin d'aide ?
+        </h2>
+        <p class="aide-section__body">
+          Problème de connexion, mot de passe oublié ou question technique ?
+          Notre équipe support est disponible pour vous accompagner.
+        </p>
+        <div class="aide-section__contact">
+          <div class="aide-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.55 6.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+33173306012">01 73 30 60 12</a>
+          </div>
+          <div class="aide-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:support@flex-flux.com">support@flex-flux.com</a>
+          </div>
+          <div class="aide-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>38 Rue Gallieni, 92600 Asnières-sur-Seine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="aide-section__hours reveal" data-delay="1">
+        <span class="aide-section__hours-title">Horaires du support</span>
+        <div class="aide-section__hours-list">
+          <div class="aide-section__hours-row">
+            <span>Lundi – Vendredi</span>
+            <span>9h00 – 18h30</span>
+          </div>
+          <div class="aide-section__hours-row">
+            <span>Samedi</span>
+            <span>9h00 – 12h00</span>
+          </div>
+          <div class="aide-section__hours-row">
+            <span>Dimanche</span>
+            <span>Fermé</span>
+          </div>
+          <div class="aide-section__hours-row">
+            <span>Urgences exploitation</span>
+            <span style="color: var(--ff-pixel-green); font-weight: 600;">7j/7 24h/24</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo" aria-label="Pied de page Flex-Flux">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a class="footer__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+        <img class="footer__logo-sigle"
+             src="assets/images/flex-flux-sigle-blanc.png"
+             alt="" aria-hidden="true" width="32">
+        <span class="footer__logo-text">
+          <span class="footer__logo-dash">Flex</span>-Flux
+        </span>
+      </a>
+      <p class="footer__baseline">
+        Partenaire technologique et humain des opérateurs de transport public.
+      </p>
+    </div>
+    <nav aria-label="Navigation footer">
+      <span class="footer__col-title">Navigation</span>
+      <ul class="footer__nav-list" role="list">
+        <li><a class="footer__nav-link" href="index.html">Accueil</a></li>
+        <li><a class="footer__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="footer__nav-link" href="notre-approche.html">Notre Approche</a></li>
+        <li><a class="footer__nav-link" href="references.html">Références</a></li>
+        <li><a class="footer__nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div>
+      <span class="footer__col-title">Coordonnées</span>
+      <address style="font-style: normal">
+        <ul class="footer__contact-list" role="list">
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>38 Rue Gallieni<br>92600 Asnières-sur-Seine</span>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.55 6.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a class="footer__contact-link" href="tel:+33173306012">01 73 30 60 12</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a class="footer__contact-link" href="mailto:contact@flex-flux.com">
+              contact@flex-flux.com
+            </a>
+          </li>
+        </ul>
+      </address>
+    </div>
+    <div>
+      <span class="footer__col-title">Accès Rapide</span>
+      <div class="footer__products">
+        <a class="footer__product-card"
+           href="https://flexquentation.flex-flux.com"
+           target="_blank" rel="noopener noreferrer">
+          <span class="footer__product-dot" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flexquentation</div>
+            <div class="footer__product-desc">Gestion des flux voyageurs</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="footer__product-card"
+           href="https://flexsub.flex-flux.com"
+           target="_blank" rel="noopener noreferrer">
+          <span class="footer__product-dot footer__product-dot--blue" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flex-Sub</div>
+            <div class="footer__product-desc">Gestion des remplacements</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__legal">
+      © 2026 Flex-Flux. Tous droits réservés.
+      <span class="footer__legal-sep">—</span>
+      <a href="#">Mentions légales</a>
+      <span class="footer__legal-sep">·</span>
+      SIRET&nbsp;: 824&nbsp;806&nbsp;285&nbsp;00014
+    </p>
+    <span class="footer__credit" aria-hidden="true">Flex-Flux Design System v1.0</span>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
+<script src="js/nav.js"></script>
+<script>
+  (function () {
+    'use strict';
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+  }());
+</script>
+
+</body>
+</html>

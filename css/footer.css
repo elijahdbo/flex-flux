@@ -1,0 +1,284 @@
+/* =============================================================================
+   FOOTER.CSS — Flex-Flux
+   Footer 4 col desktop / 2 col tablette / 1 col mobile
+   Dépend de : base.css
+   ============================================================================= */
+
+/* ── Wrapper ───────────────────────────────────────────────── */
+.footer {
+  background: var(--ff-bg-deep);
+  border-top: 1px solid var(--ff-border-dark);
+}
+
+/* ── Grille 4 colonnes ─────────────────────────────────────── */
+.footer__top {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 5rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .footer__top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__top {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-inline: 3rem;
+  }
+}
+
+/* ── Col 1 — Brand ─────────────────────────────────────────── */
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  border-radius: 4px;
+  transition: opacity .2s;
+}
+.footer__logo:hover { opacity: .8; }
+.footer__logo:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 4px;
+}
+
+.footer__logo-sigle {
+  width: 32px;
+  height: auto;
+}
+
+.footer__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--ff-white);
+  line-height: 1;
+}
+
+.footer__logo-dash {
+  color: var(--ff-pixel-green);
+}
+
+.footer__baseline {
+  font-size: .875rem;
+  line-height: 1.65;
+  color: var(--ff-grey-mid);
+  max-width: 24ch;
+  margin-bottom: 1.5rem;
+}
+
+/* Réseaux sociaux */
+.footer__social {
+  display: flex;
+  gap: .625rem;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ff-border-dark);
+  border-radius: 4px;
+  color: var(--ff-grey-mid);
+  transition: color .2s, border-color .2s, background .2s;
+}
+.footer__social-link:hover {
+  color: var(--ff-pixel-green);
+  border-color: var(--ff-pixel-green);
+  background: rgba(181, 204, 24, .07);
+}
+.footer__social-link:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 2px;
+}
+
+/* ── Cols 2-3 — Navigation ─────────────────────────────────── */
+.footer__col-title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--ff-pixel-green);
+  margin-bottom: 1.375rem;
+}
+
+.footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.footer__nav-link {
+  display: inline-block;
+  font-size: .875rem;
+  color: var(--ff-grey-mid);
+  transition: color .2s, padding-left .2s var(--ease-out);
+}
+.footer__nav-link:hover {
+  color: var(--ff-white);
+  padding-left: .375rem;
+}
+.footer__nav-link:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Col 3 — Coordonnées ───────────────────────────────────── */
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .625rem;
+  font-size: .875rem;
+  line-height: 1.6;
+  color: var(--ff-grey-mid);
+}
+
+.footer__contact-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--ff-pixel-green);
+}
+
+.footer__contact-link {
+  color: var(--ff-grey-mid);
+  transition: color .2s;
+}
+.footer__contact-link:hover { color: var(--ff-white); }
+.footer__contact-link:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Col 4 — Accès rapide progiciels ───────────────────────── */
+.footer__products {
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+
+.footer__product-card {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  padding: .875rem 1rem;
+  background: var(--ff-bg-panel);
+  border: 1px solid var(--ff-border-dark);
+  border-radius: 6px;
+  transition:
+    border-color .2s,
+    background   .2s,
+    transform    .2s var(--ease-spring);
+}
+.footer__product-card:hover {
+  border-color: var(--ff-pixel-green);
+  background: rgba(181, 204, 24, .05);
+  transform: translateX(4px);
+}
+.footer__product-card:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 2px;
+}
+
+.footer__product-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--ff-pixel-green);
+  box-shadow: 0 0 8px rgba(181, 204, 24, .5);
+}
+.footer__product-dot--blue {
+  background: var(--ff-blue);
+  box-shadow: 0 0 8px rgba(39, 113, 174, .5);
+}
+
+.footer__product-info { flex: 1; min-width: 0; }
+
+.footer__product-name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ff-white);
+  margin-bottom: .125rem;
+  line-height: 1.1;
+}
+
+.footer__product-desc {
+  font-size: .75rem;
+  color: var(--ff-grey-mid);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer__product-arrow {
+  color: var(--ff-grey-mid);
+  flex-shrink: 0;
+  transition: color .2s, transform .2s var(--ease-spring);
+}
+.footer__product-card:hover .footer__product-arrow {
+  color: var(--ff-pixel-green);
+  transform: translateX(3px);
+}
+
+/* ── Barre de bas ──────────────────────────────────────────── */
+.footer__bottom {
+  border-top: 1px solid var(--ff-border-dark);
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 1.375rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+@media (min-width: 1024px) {
+  .footer__bottom { padding-inline: 3rem; }
+}
+
+.footer__legal {
+  font-size: .75rem;
+  line-height: 1.6;
+  color: var(--ff-grey-mid);
+}
+.footer__legal a {
+  color: var(--ff-grey-mid);
+  transition: color .2s;
+}
+.footer__legal a:hover { color: var(--ff-white); }
+
+.footer__legal-sep {
+  margin-inline: .4rem;
+  opacity: .35;
+}
+
+.footer__credit {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  color: rgba(255, 255, 255, .18);
+  letter-spacing: .05em;
+}

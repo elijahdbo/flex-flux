@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notre Approche — Flex-Flux allie expertise terrain et innovation technologique pour les réseaux de transport public.">
+  <title>Notre Approche — Flex-Flux</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <style>
+    /* ── Hero ──────────────────────────────────────────────── */
+    .page-hero {
+      padding-top: calc(var(--navbar-h-mobile) + 4rem);
+      padding-bottom: 5rem;
+      background: var(--ff-bg-deep);
+      position: relative; overflow: hidden;
+    }
+    @media (min-width: 1024px) {
+      .page-hero { padding-top: calc(var(--navbar-h-desk) + 5rem); }
+    }
+    .page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(181,204,24,.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .page-hero__container {
+      max-width: 1280px; margin-inline: auto;
+      padding-inline: 1.5rem; position: relative; z-index: 1;
+    }
+    @media (min-width: 1024px) { .page-hero__container { padding-inline: 3rem; } }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800; letter-spacing: -.04em; line-height: .92;
+      color: var(--ff-white); margin-bottom: 1.25rem;
+    }
+    .page-hero__sub {
+      font-size: 1.125rem; font-weight: 300; line-height: 1.7;
+      color: rgba(255,255,255,.65); max-width: 60ch;
+    }
+
+    /* ── Section intro ─────────────────────────────────────── */
+    .approche-intro {
+      padding: 7rem 0;
+      background: var(--ff-white);
+    }
+    .approche-intro__container {
+      max-width: 1280px; margin-inline: auto;
+      padding-inline: 1.5rem;
+      display: grid; grid-template-columns: 1fr;
+      gap: 3rem; align-items: center;
+    }
+    @media (min-width: 768px) {
+      .approche-intro__container {
+        grid-template-columns: 1fr 1fr;
+        padding-inline: 3rem; gap: 5rem;
+      }
+    }
+    .approche-intro__image {
+      border-radius: 8px; overflow: hidden; aspect-ratio: 4/3;
+    }
+    .approche-intro__image img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s var(--ease-out);
+    }
+    .approche-intro__image:hover img { transform: scale(1.04); }
+    .approche-intro__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+      color: var(--ff-navy); margin-bottom: 1.25rem;
+    }
+    .approche-intro__body {
+      font-size: 1rem; line-height: 1.8;
+      color: var(--ff-grey-dark); margin-bottom: 1.25rem;
+    }
+    .approche-intro__accent { color: var(--ff-pixel-green); font-weight: 600; }
+
+    /* ── Valeurs ───────────────────────────────────────────── */
+    .valeurs {
+      padding: 6rem 0;
+      background: var(--ff-off-white);
+    }
+    .valeurs__container {
+      max-width: 1280px; margin-inline: auto; padding-inline: 1.5rem;
+    }
+    @media (min-width: 1024px) { .valeurs__container { padding-inline: 3rem; } }
+    .valeurs__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800; letter-spacing: -.03em;
+      color: var(--ff-navy); margin-bottom: 3rem;
+    }
+    .valeurs__grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .valeurs__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .valeurs__grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    }
+    .valeur-card {
+      padding: 2rem;
+      background: var(--ff-white);
+      border: 1px solid var(--ff-grey-light);
+      border-radius: 8px;
+      border-top: 3px solid var(--ff-pixel-green);
+      transition: transform .25s var(--ease-out), box-shadow .25s;
+    }
+    .valeur-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    .valeur-card__num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 800;
+      color: var(--ff-pixel-green); line-height: 1; margin-bottom: .75rem;
+    }
+    .valeur-card__title {
+      font-size: 1.0625rem; font-weight: 600;
+      color: var(--ff-navy); margin-bottom: .625rem;
+    }
+    .valeur-card__body {
+      font-size: .875rem; line-height: 1.7; color: var(--ff-grey-mid);
+    }
+
+    /* ── Processus ─────────────────────────────────────────── */
+    .processus {
+      padding: 6rem 0;
+      background: var(--ff-bg-deep);
+    }
+    .processus__container {
+      max-width: 1280px; margin-inline: auto; padding-inline: 1.5rem;
+    }
+    @media (min-width: 1024px) { .processus__container { padding-inline: 3rem; } }
+    .processus__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800; letter-spacing: -.03em;
+      color: var(--ff-white); margin-bottom: 3rem;
+    }
+    .processus__steps {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+    }
+    @media (min-width: 768px) {
+      .processus__steps { grid-template-columns: repeat(4, 1fr); gap: 0; }
+    }
+    .processus__step {
+      padding: 2rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--ff-border-dark);
+    }
+    @media (min-width: 768px) {
+      .processus__step {
+        border-bottom: none;
+        border-right: 1px solid var(--ff-border-dark);
+      }
+      .processus__step:last-child { border-right: none; }
+    }
+    .processus__step-num {
+      font-family: var(--font-display); font-size: 4rem; font-weight: 800;
+      letter-spacing: -.04em; color: rgba(181,204,24,.2);
+      line-height: 1; margin-bottom: .75rem;
+    }
+    .processus__step-title {
+      font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      color: var(--ff-white); margin-bottom: .625rem;
+    }
+    .processus__step-body {
+      font-size: .875rem; line-height: 1.7; color: var(--ff-grey-mid);
+    }
+
+    /* ── CTA ───────────────────────────────────────────────── */
+    .approche-cta {
+      padding: 6rem 0; background: var(--ff-navy); text-align: center;
+    }
+    .approche-cta__container {
+      max-width: 700px; margin-inline: auto; padding-inline: 1.5rem;
+    }
+    .approche-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -.03em;
+      color: var(--ff-white); margin-bottom: 1rem;
+    }
+    .approche-cta__sub {
+      font-size: 1rem; color: var(--ff-grey-mid);
+      line-height: 1.65; margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+      <img class="navbar__logo-sigle"
+           src="assets/images/flex-flux-sigle-blanc.png"
+           alt="" aria-hidden="true" width="30">
+      <span class="navbar__logo-text">
+        <span class="navbar__logo-dash">Flex</span>-Flux
+      </span>
+    </a>
+    <nav class="navbar__nav" role="navigation" aria-label="Navigation principale">
+      <ul class="navbar__nav-list" role="list">
+        <li><a class="navbar__nav-link" href="index.html">Accueil</a></li>
+        <li><a class="navbar__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="navbar__nav-link" href="notre-approche.html" aria-current="page">Notre Approche</a></li>
+        <li><a class="navbar__nav-link" href="references.html">Références</a></li>
+        <li><a class="navbar__nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="navbar__actions">
+      <a class="navbar__cta" href="espace-client.html">Espace Client</a>
+      <button class="navbar__burger" id="burger-btn" type="button"
+              aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+        <span class="navbar__burger-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobile-menu" role="dialog"
+     aria-modal="true" aria-label="Menu principal" hidden>
+  <div class="mobile-menu__watermark" aria-hidden="true">
+    <img src="assets/images/flex-flux-sigle-blanc.png" alt="" width="380">
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Navigation mobile">
+    <ul class="mobile-menu__list" role="list">
+      <li class="mobile-menu__item" style="--item-index:0">
+        <a class="mobile-menu__link" href="index.html">
+          <span class="mobile-menu__link-label">Accueil</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:1">
+        <a class="mobile-menu__link" href="nos-solutions.html">
+          <span class="mobile-menu__link-label">Nos Solutions</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:2">
+        <a class="mobile-menu__link" href="notre-approche.html" aria-current="page">
+          <span class="mobile-menu__link-label">Notre Approche</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:3">
+        <a class="mobile-menu__link" href="references.html">
+          <span class="mobile-menu__link-label">Références</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="mobile-menu__item" style="--item-index:4">
+        <a class="mobile-menu__link" href="contact.html">
+          <span class="mobile-menu__link-label">Contact</span>
+          <span class="mobile-menu__link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-menu__cta-wrap">
+      <a class="mobile-menu__cta" href="espace-client.html">Espace Client</a>
+    </div>
+  </nav>
+</div>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main-content" tabindex="-1">
+
+  <!-- Hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__container">
+      <span class="section-label">Notre Approche</span>
+      <h1 class="page-hero__title" id="page-title">
+        Humain d'abord,<br>technologie ensuite.
+      </h1>
+      <p class="page-hero__sub">
+        Depuis 20 ans, Flex-Flux construit sa réputation sur une conviction simple :
+        les meilleures solutions naissent de la rencontre entre l'expertise
+        terrain et l'innovation technologique.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="approche-intro" aria-labelledby="intro-title">
+    <div class="approche-intro__container">
+      <div class="approche-intro__image reveal-left">
+        <img src="assets/images/banniere-flexflux.jpg"
+             alt="Ville connectée et mobilité intelligente — Flex-Flux"
+             width="600" height="450" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="section-label">Notre philosophie</span>
+        <h2 class="approche-intro__title" id="intro-title">
+          La performance par les personnes.
+        </h2>
+        <p class="approche-intro__body">
+          Un réseau de transport performant, c'est d'abord des femmes et des hommes
+          compétents, bien encadrés, motivés. Les outils viennent ensuite —
+          pour amplifier ce que les équipes font déjà bien.
+        </p>
+        <p class="approche-intro__body">
+          C'est pourquoi chaque déploiement Flex-Flux commence par
+          <span class="approche-intro__accent">comprendre votre terrain</span>,
+          avant de proposer des solutions. Nous ne vendons pas des produits :
+          nous construisons des partenariats durables.
+        </p>
+        <p class="approche-intro__body">
+          Résultat : des réseaux plus fluides, des équipes plus serenes,
+          et des voyageurs mieux servis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="valeurs" aria-labelledby="valeurs-title">
+    <div class="valeurs__container">
+      <span class="section-label reveal">Nos valeurs</span>
+      <h2 class="valeurs__title reveal" id="valeurs-title" data-delay="1">
+        Ce qui guide chaque décision.
+      </h2>
+      <div class="valeurs__grid">
+        <div class="valeur-card reveal" data-delay="1">
+          <div class="valeur-card__num">01</div>
+          <h3 class="valeur-card__title">Proximité terrain</h3>
+          <p class="valeur-card__body">
+            Nos équipes sont présentes sur le terrain, pas derrière un écran.
+            Nous connaissons vos contraintes parce que nous les vivons avec vous.
+          </p>
+        </div>
+        <div class="valeur-card reveal" data-delay="2">
+          <div class="valeur-card__num">02</div>
+          <h3 class="valeur-card__title">Excellence opérationnelle</h3>
+          <p class="valeur-card__body">
+            Chaque agent formé, chaque ligne de code écrite, chaque rapport
+            rendu — tout vise la même exigence : zéro défaillance pour le service.
+          </p>
+        </div>
+        <div class="valeur-card reveal" data-delay="3">
+          <div class="valeur-card__num">03</div>
+          <h3 class="valeur-card__title">Innovation utile</h3>
+          <p class="valeur-card__body">
+            Nous développons des outils parce qu'ils résolvent de vrais problèmes,
+            pas pour suivre une tendance. L'innovation, chez nous, se mesure
+            à son impact concret.
+          </p>
+        </div>
+        <div class="valeur-card reveal" data-delay="4">
+          <div class="valeur-card__num">04</div>
+          <h3 class="valeur-card__title">Partenariat long terme</h3>
+          <p class="valeur-card__body">
+            Nos meilleures références sont nos clients les plus anciens.
+            La confiance se construit dans la durée, et c'est ainsi que
+            nous travaillons.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Processus -->
+  <section class="processus" aria-labelledby="processus-title">
+    <div class="processus__container">
+      <span class="section-label reveal">Notre méthode</span>
+      <h2 class="processus__title reveal" id="processus-title" data-delay="1">
+        De votre besoin à la solution.
+      </h2>
+      <div class="processus__steps">
+        <div class="processus__step reveal" data-delay="1">
+          <div class="processus__step-num">01</div>
+          <h3 class="processus__step-title">Écoute &amp; diagnostic</h3>
+          <p class="processus__step-body">
+            Nous prenons le temps de comprendre vos enjeux, votre organisation,
+            vos contraintes avant de proposer quoi que ce soit.
+          </p>
+        </div>
+        <div class="processus__step reveal" data-delay="2">
+          <div class="processus__step-num">02</div>
+          <h3 class="processus__step-title">Proposition sur mesure</h3>
+          <p class="processus__step-body">
+            Chaque réponse est construite pour vous. Pas de solution
+            standardisée : une combinaison adaptée à votre réseau.
+          </p>
+        </div>
+        <div class="processus__step reveal" data-delay="3">
+          <div class="processus__step-num">03</div>
+          <h3 class="processus__step-title">Déploiement accompagné</h3>
+          <p class="processus__step-body">
+            Nos équipes vous accompagnent à chaque étape du déploiement,
+            de la formation initiale à la montée en compétences.
+          </p>
+        </div>
+        <div class="processus__step reveal" data-delay="4">
+          <div class="processus__step-num">04</div>
+          <h3 class="processus__step-title">Suivi &amp; amélioration</h3>
+          <p class="processus__step-body">
+            Un partenariat ne s'arrête pas au lancement. Nous suivons
+            les résultats et ajustons en continu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="approche-cta" aria-labelledby="approche-cta-title">
+    <div class="approche-cta__container">
+      <span class="section-label reveal">Travaillons ensemble</span>
+      <h2 class="approche-cta__title reveal" id="approche-cta-title" data-delay="1">
+        Prêt à transformer votre exploitation ?
+      </h2>
+      <p class="approche-cta__sub reveal" data-delay="2">
+        Contactez-nous pour un premier échange sans engagement.
+        Notre équipe vous répond sous 24h.
+      </p>
+      <div class="reveal" data-delay="3">
+        <a class="btn-primary" href="contact.html">Prendre contact</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo" aria-label="Pied de page Flex-Flux">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a class="footer__logo" href="index.html" aria-label="Flex-Flux — Accueil">
+        <img class="footer__logo-sigle"
+             src="assets/images/flex-flux-sigle-blanc.png"
+             alt="" aria-hidden="true" width="32">
+        <span class="footer__logo-text">
+          <span class="footer__logo-dash">Flex</span>-Flux
+        </span>
+      </a>
+      <p class="footer__baseline">
+        Partenaire technologique et humain des opérateurs de transport public.
+      </p>
+    </div>
+    <nav aria-label="Navigation footer">
+      <span class="footer__col-title">Navigation</span>
+      <ul class="footer__nav-list" role="list">
+        <li><a class="footer__nav-link" href="index.html">Accueil</a></li>
+        <li><a class="footer__nav-link" href="nos-solutions.html">Nos Solutions</a></li>
+        <li><a class="footer__nav-link" href="notre-approche.html">Notre Approche</a></li>
+        <li><a class="footer__nav-link" href="references.html">Références</a></li>
+        <li><a class="footer__nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div>
+      <span class="footer__col-title">Coordonnées</span>
+      <address style="font-style: normal">
+        <ul class="footer__contact-list" role="list">
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a class="footer__contact-link" href="mailto:contact@flex-flux.com">
+              contact@flex-flux.com
+            </a>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="footer__contact-icon" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.55 6.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a class="footer__contact-link" href="tel:+33173306012">01 73 30 60 12</a>
+          </li>
+        </ul>
+      </address>
+    </div>
+    <div>
+      <span class="footer__col-title">Accès Rapide</span>
+      <div class="footer__products">
+        <a class="footer__product-card" href="espace-client.html">
+          <span class="footer__product-dot" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flexquentation</div>
+            <div class="footer__product-desc">Gestion des flux voyageurs</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="footer__product-card" href="espace-client.html">
+          <span class="footer__product-dot footer__product-dot--blue" aria-hidden="true"></span>
+          <div class="footer__product-info">
+            <div class="footer__product-name">Flex-Sub</div>
+            <div class="footer__product-desc">Gestion des remplacements</div>
+          </div>
+          <svg class="footer__product-arrow" width="14" height="14"
+               viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__legal">
+      © 2026 Flex-Flux. Tous droits réservés.
+      <span class="footer__legal-sep">—</span>
+      <a href="#">Mentions légales</a>
+      <span class="footer__legal-sep">·</span>
+      SIRET&nbsp;: 824&nbsp;806&nbsp;285&nbsp;00014
+    </p>
+    <span class="footer__credit" aria-hidden="true">Flex-Flux Design System v1.0</span>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
+<script src="js/nav.js"></script>
+<script>
+  (function () {
+    'use strict';
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+      obs.observe(el);
+    });
+  }());
+</script>
+
+</body>
+</html>

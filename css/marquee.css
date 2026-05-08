@@ -1,0 +1,61 @@
+/* =============================================================================
+   MARQUEE.CSS — Flex-Flux
+   Bande défilante CSS pur — fond #B5CC18, boucle 30s
+   Dépend de : base.css
+   ============================================================================= */
+
+.marquee {
+  height: 52px;
+  background: var(--ff-pixel-green);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* Pause au survol */
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* Piste — 2x le contenu pour boucle seamless */
+.marquee__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Item texte */
+.marquee__item {
+  font-family: var(--font-display);
+  font-size: .875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--ff-bg-deep);
+  padding-inline: 1.125rem;
+  flex-shrink: 0;
+}
+
+/* Séparateur · en bleu */
+.marquee__sep {
+  flex-shrink: 0;
+  font-size: .875rem;
+  font-weight: 900;
+  color: var(--ff-blue);
+  line-height: 1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}

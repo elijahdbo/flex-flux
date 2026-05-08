@@ -1,0 +1,163 @@
+/* =============================================================================
+   CTA.CSS — Flex-Flux
+   Section CTA contact — fond navy + watermark sigle 900px
+   Dépend de : base.css
+   ============================================================================= */
+
+/* ── Wrapper ───────────────────────────────────────────────── */
+.cta-section {
+  position: relative;
+  padding: 7.5rem 0;
+  background: var(--ff-navy);
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── Gradients d'ambiance (cohérence stats/hero) ───────────── */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(181, 204, 24, .08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 75%, rgba(39, 113, 174, .15) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ── Watermark sigle 900px ─────────────────────────────────── */
+.cta-section__deco {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 900px;
+  max-width: 110vw;
+  height: auto;
+  z-index: -1;
+  opacity: .04;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: invert(1);
+  user-select: none;
+}
+
+/* Sur très petits écrans, on rétrécit légèrement le sigle */
+@media (max-width: 600px) {
+  .cta-section__deco {
+    width: 700px;
+    opacity: .035;
+  }
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.cta-section__container {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .cta-section__container {
+    padding-inline: 3rem;
+  }
+}
+
+/* ── Section label (overrides la couleur globale) ──────────── */
+.cta-section .section-label {
+  margin-bottom: 1.25rem;
+}
+
+/* ── Titre ─────────────────────────────────────────────────── */
+.cta-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  color: var(--ff-white);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Sous-titre ────────────────────────────────────────────── */
+.cta-section__sub {
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .65);
+  max-width: 52ch;
+  margin: 0 auto 2.75rem;
+}
+
+/* ── Actions ───────────────────────────────────────────────── */
+.cta-section__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Override léger de .btn-primary dans ce contexte pour matcher
+   l'animation hover scale(1.03) demandée au brief, sans casser
+   le btn-primary global qui fait translateY(-2px) */
+.cta-section .btn-primary {
+  transition:
+    background .2s,
+    transform  .2s var(--ease-spring),
+    box-shadow .2s;
+}
+.cta-section .btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(181, 204, 24, .35);
+}
+
+/* ── Téléphone ─────────────────────────────────────────────── */
+.cta-section__tel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .625rem;
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .55);
+  letter-spacing: .02em;
+}
+
+.cta-section__tel-icon {
+  color: var(--ff-pixel-green);
+  flex-shrink: 0;
+}
+
+.cta-section__tel a {
+  color: rgba(255, 255, 255, .55);
+  transition: color .2s;
+  border-radius: 2px;
+}
+.cta-section__tel a:hover {
+  color: var(--ff-white);
+}
+.cta-section__tel a:focus-visible {
+  outline: 2px solid var(--ff-pixel-green);
+  outline-offset: 4px;
+}
+
+/* ── Séparateur décoratif top (subtil) ─────────────────────── */
+.cta-section__divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ff-pixel-green) 50%,
+    transparent 100%
+  );
+  opacity: .6;
+}

@@ -1,0 +1,232 @@
+/* =============================================================================
+   SOLUTIONS.CSS — Flex-Flux
+   Section "Nos Solutions" — grille 2×2 + pixel-reveal au hover
+   Dépend de : base.css
+   ============================================================================= */
+
+/* ── Section ───────────────────────────────────────────────── */
+.solutions {
+  padding: 7.5rem 0;
+  background: var(--ff-white);
+}
+
+.solutions__container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .solutions__container {
+    padding-inline: 3rem;
+  }
+}
+
+/* ── En-tête ───────────────────────────────────────────────── */
+.solutions__header {
+  margin-bottom: 4rem;
+  max-width: 700px;
+}
+
+.solutions__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.375rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  color: var(--ff-navy);
+  margin-bottom: 1.25rem;
+}
+
+.solutions__intro {
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ff-grey-mid);
+  max-width: 62ch;
+}
+
+/* ── Grille 2×2 ────────────────────────────────────────────── */
+.solutions__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .solutions__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .solutions__grid {
+    gap: 2.5rem;
+  }
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.sol-card {
+  position: relative;
+  padding: 2.25rem 2rem 2rem;
+  border: 1px solid var(--ff-grey-light);
+  border-radius: 8px;
+  background: var(--ff-white);
+  overflow: hidden;
+  transition:
+    transform    .25s var(--ease-out),
+    box-shadow   .25s var(--ease-out),
+    border-color .25s;
+}
+
+/* Ligne top accent */
+.sol-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-accent, var(--ff-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--ease-out);
+}
+
+.sol-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .10);
+  border-color: transparent;
+}
+.sol-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Icône pixel-art ───────────────────────────────────────── */
+.sol-card__icon-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  isolation: isolate;
+}
+
+.sol-card__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s var(--ease-out);
+}
+.sol-card:hover .sol-card__icon-img {
+  transform: scale(1.06);
+}
+
+/* Grille pixel-reveal 6×6 */
+.sol-card__pixel-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pixel-cell {
+  background: var(--card-accent, var(--ff-blue));
+  opacity: 0;
+  transform: scale(.3);
+  transition:
+    opacity   .22s var(--ease-out),
+    transform .22s var(--ease-spring);
+}
+
+.pixel-cell.is-lit {
+  opacity: .18;
+  transform: scale(1);
+}
+
+.pixel-cell.is-off {
+  transition-delay: 0ms !important;
+  opacity: 0;
+  transform: scale(.3);
+}
+
+/* ── Contenu ───────────────────────────────────────────────── */
+.sol-card__tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--card-accent, var(--ff-blue));
+  margin-bottom: .75rem;
+}
+
+.sol-card__title {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  color: var(--ff-navy);
+  margin-bottom: .875rem;
+}
+
+.sol-card__body {
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: var(--ff-grey-mid);
+  margin-bottom: 1.625rem;
+}
+
+/* Lien */
+.sol-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--card-accent, var(--ff-blue));
+  position: relative;
+  padding-bottom: 1px;
+}
+
+.sol-card__link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--ease-out);
+}
+.sol-card:hover .sol-card__link::after {
+  transform: scaleX(1);
+}
+
+.sol-card__link-arrow {
+  display: inline-block;
+  transition: transform .2s var(--ease-spring);
+}
+.sol-card:hover .sol-card__link-arrow {
+  transform: translateX(5px);
+}
+
+/* Numéro décoratif */
+.sol-card__num {
+  position: absolute;
+  bottom: -.25rem;
+  right: 1rem;
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1;
+  color: rgba(0, 0, 0, .035);
+  pointer-events: none;
+  user-select: none;
+}

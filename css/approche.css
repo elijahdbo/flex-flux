@@ -1,0 +1,245 @@
+/* =============================================================================
+   APPROCHE.CSS — Flex-Flux
+   Section "Notre Approche" — citation éditoriale géante + image clip-path reveal
+   Dépend de : base.css
+   ============================================================================= */
+
+/* ── Wrapper ───────────────────────────────────────────────── */
+.approach {
+  position: relative;
+  padding: 7.5rem 0;
+  background: var(--ff-off-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Gradient d'ambiance subtil (cohérence stats/hero) */
+.approach::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 88% 15%, rgba(39, 113, 174, .055) 0%, transparent 55%),
+    radial-gradient(ellipse at 5% 85%, rgba(181, 204, 24, .04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ── Citation éditoriale "Flex-Flux" — version A : signature gauche ── */
+.approach__statement-wrap {
+  /* La citation s'intègre dans la colonne gauche au-dessus de l'image */
+  margin-bottom: 1.5rem;
+  text-align: left;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.approach__statement {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: .92;
+  color: var(--ff-navy);
+  display: inline-block;
+  position: relative;
+
+  /* Clip-path masque qui s'ouvre de gauche à droite */
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s var(--ease-in-out);
+  will-change: clip-path;
+}
+
+.approach.is-revealed .approach__statement {
+  clip-path: inset(0 0 0 0);
+}
+
+.approach__statement-flex   { color: var(--ff-pixel-green); }
+.approach__statement-dash   { color: var(--ff-navy); }
+.approach__statement-flux   { color: var(--ff-blue); }
+
+/* Petit point décoratif final, façon ponctuation éditoriale */
+.approach__statement-dot {
+  display: inline-block;
+  width: .14em;
+  height: .14em;
+  background: var(--ff-red);
+  border-radius: 2px;
+  margin-left: .12em;
+  vertical-align: super;
+  opacity: 0;
+  transform: scale(.3);
+  transition:
+    opacity   .4s var(--ease-spring) 1.2s,
+    transform .4s var(--ease-spring) 1.2s;
+}
+.approach.is-revealed .approach__statement-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Container split image / texte ─────────────────────────── */
+.approach__container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .approach__container {
+    grid-template-columns: 1.05fr 1fr;
+    padding-inline: 3rem;
+    gap: 5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .approach__container {
+    gap: 6.5rem;
+  }
+}
+
+/* ── Bloc image avec clip-path reveal ──────────────────────── */
+.approach__image {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--ff-bg-deep);
+
+  /* Reveal clip-path gauche → droite */
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s var(--ease-in-out) .15s;
+  will-change: clip-path;
+}
+
+.approach.is-revealed .approach__image {
+  clip-path: inset(0 0 0 0);
+}
+
+.approach__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1s var(--ease-out);
+}
+
+.approach__image:hover img {
+  transform: scale(1.04);
+}
+
+/* Overlay subtil pour adoucir le contraste blueprint */
+.approach__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(27, 58, 92, .25) 0%,
+    rgba(39, 113, 174, .1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Petit accent décoratif coin haut-gauche de l'image */
+.approach__image-corner {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 32px;
+  height: 32px;
+  border-top: 2px solid var(--ff-pixel-green);
+  border-left: 2px solid var(--ff-pixel-green);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-8px, -8px);
+  transition:
+    opacity   .5s var(--ease-out) 1.1s,
+    transform .5s var(--ease-out) 1.1s;
+}
+.approach.is-revealed .approach__image-corner {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Bloc texte ────────────────────────────────────────────── */
+.approach__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.2vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  color: var(--ff-navy);
+  margin-bottom: 1.5rem;
+}
+
+.approach__body {
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ff-grey-dark);
+  margin-bottom: 1.25rem;
+}
+
+.approach__accent-flex { color: var(--ff-pixel-green); font-weight: 600; }
+.approach__accent-flux { color: var(--ff-blue);        font-weight: 600; }
+
+/* CTA */
+.approach__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .9rem 2rem;
+  margin-top: 1rem;
+  background: var(--ff-blue);
+  color: var(--ff-white);
+  font-size: .8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  border-radius: 4px;
+  transition:
+    background .25s,
+    transform  .25s var(--ease-spring),
+    box-shadow .25s;
+}
+.approach__cta:hover {
+  background: var(--ff-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(39, 113, 174, .3);
+}
+
+.approach__cta-arrow {
+  transition: transform .25s var(--ease-spring);
+}
+.approach__cta:hover .approach__cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Alignement vertical colonnes ──────────────────────────── */
+@media (min-width: 768px) {
+  /* La colonne droite démarre au niveau de l'image (pas de la citation) */
+  .approach__text {
+    padding-top: clamp(4rem, 9vw, 7.5rem);
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .approach__statement,
+  .approach__image {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
+  .approach__statement-dot,
+  .approach__image-corner {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
